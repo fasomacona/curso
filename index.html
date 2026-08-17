@@ -3,261 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temario - Administración de Proyectos en Ciencia de Datos con Python</title>
+    <title>Administración de Proyectos en Ciencia de Datos | Curso con Python</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a365d;
-            --accent: #2b6cb0;
-            --success: #38a169;
-            --light: #f7fafc;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-light: #3b82f6;
+            --success: #10b981;
+            --text: #1e293b;
+            --muted: #64748b;
+            --bg: #f1f5f9;
+            --card: #ffffff;
         }
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.7;
-            margin: 0;
-            background: #edf2f7;
-            color: #2d3748;
         }
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #2563eb 100%);
             color: white;
-            padding: 3.5rem 1.5rem;
+            padding: 5rem 1.5rem 4.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(1.9rem, 5vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+        .hero .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+        .hero .meta {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-top: 1.25rem;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin: 0.3rem;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        /* Objetivo */
+        .objetivo {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            margin: -2.5rem auto 3rem;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
             text-align: center;
         }
-        header h1 { margin: 0 0 0.5rem; font-size: 2.2rem; }
-        header p { margin: 0.3rem 0; opacity: 0.95; }
-        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
-        .card {
+        .objetivo h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .objetivo p {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        /* Módulos grid */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+        .section-title h2 {
+            font-size: 1.9rem;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+        .section-title p {
+            color: var(--muted);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+        .module-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .module-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 35px rgba(37,99,235,0.15);
+            border-color: #93c5fd;
+        }
+        .module-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #1d4ed8);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .module-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        .module-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 1.25rem;
+        }
+        .hours-tag {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #047857;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+        .btn-module {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.3rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            align-self: flex-start;
+        }
+        .btn-module:hover {
+            background: #1d4ed8;
+        }
+
+        /* Info boxes */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin: 2.5rem 0 3.5rem;
+        }
+        .info-box {
             background: white;
             border-radius: 14px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            padding: 2rem;
-            margin-bottom: 1.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .card h2 {
+        .info-box i {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        .info-box h4 {
+            margin-bottom: 0.4rem;
             color: var(--primary);
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.25rem 0;
+        .info-box p {
+            color: var(--muted);
+            font-size: 0.9rem;
         }
-        th, td {
-            padding: 0.9rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        th {
-            background: var(--accent);
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
             color: white;
-            font-weight: 600;
+            border-radius: 18px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
         }
-        tr:nth-child(even) { background: #f7fafc; }
-        .module-card {
-            border-left: 6px solid var(--accent);
-            padding-left: 1.25rem;
-            margin: 1.5rem 0;
+        .cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
         }
-        .hours {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.85rem 1.6rem;
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: white;
+            color: #1e3a8a;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            margin: 0.4rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
             transition: 0.2s;
         }
-        .btn:hover { background: var(--primary); transform: translateY(-2px); }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: var(--primary);
-            color: white;
-            margin-top: 3rem;
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.25);
         }
-        ul { padding-left: 1.4rem; }
-        li { margin: 0.4rem 0; }
+
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+        }
+        footer strong { color: white; }
+
+        @media (max-width: 600px) {
+            .hero { padding: 3.5rem 1rem 3rem; }
+            .objetivo { margin: -1.5rem 1rem 2rem; padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1><i class="fas fa-project-diagram"></i> Administración de Proyectos en la Ciencia de Datos</h1>
-        <p><strong>Curso acelerado con Python</strong></p>
-        <p>Duración total: 30 horas | 5 Módulos</p>
-    </header>
 
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge"><i class="fas fa-bolt"></i> Curso acelerado</div>
+            <div class="badge"><i class="fas fa-clock"></i> 30 horas</div>
+            <div class="badge"><i class="fas fa-layer-group"></i> 5 módulos</div>
+            
+            <h1>Administración de Proyectos<br>en la Ciencia de Datos</h1>
+            <p class="subtitle">Curso acelerado con Python</p>
+            <p class="meta">
+                Aprende a gestionar y ejecutar proyectos de datos de principio a fin<br>
+                combinando metodologías profesionales + Python práctico
+            </p>
+        </div>
+    </section>
+
+    <!-- OBJETIVO -->
     <div class="container">
-
-        <div class="card">
-            <h2>Objetivo General del Curso</h2>
+        <div class="objetivo">
+            <h2><i class="fas fa-bullseye"></i> Objetivo del Curso</h2>
             <p>
                 Conocer los conceptos fundamentales del lenguaje de programación de manera rápida y eficaz, 
                 con el fin de que los participantes adquieran las habilidades necesarias para poder aplicar 
                 Python en proyectos reales de Ciencia de Datos en un corto período de tiempo.
             </p>
+        </div>
+    </div>
+
+    <!-- INFO RÁPIDA -->
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-box">
+                <i class="fas fa-code"></i>
+                <h4>Python práctico</h4>
+                <p>Desde cero hasta modelado con Scikit-learn</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-project-diagram"></i>
+                <h4>Gestión real</h4>
+                <p>CRISP-DM + Agile aplicados a datos</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-chart-line"></i>
+                <h4>Proyecto final</h4>
+                <p>Entrega de un proyecto completo y documentado</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-users"></i>
+                <h4>Enfoque profesional</h4>
+                <p>Roles, documentación y storytelling</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÓDULOS -->
+    <div class="container">
+        <div class="section-title">
+            <h2>Estructura del Curso</h2>
+            <p>5 módulos · 30 horas en total</p>
+        </div>
+
+        <div class="modules-grid">
+
+            <div class="module-card">
+                <div class="module-number">1</div>
+                <span class="hours-tag">6 horas</span>
+                <h3>Fundamentos de Python y Entorno</h3>
+                <p>Instalación, Jupyter, sintaxis, estructuras de datos, funciones y NumPy. Base sólida para trabajar.</p>
+                <a href="Modulo1_Fundamentos_Python.html" class="btn-module">
+                    Entrar al módulo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="module-card">
+                <div class="module-number">2</div>
+                <span class="hours-tag">6 horas</span>
+                <h3>Gestión de Proyectos de Datos</h3>
+                <p>CRISP-DM, Agile/Scrum, roles del equipo, Git/GitHub y documentación profesional de proyectos.</p>
+                <a href="Modulo2_Gestion_Proyectos.html" class="btn-module">
+                    Entrar al módulo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="module-card">
+                <div class="module-number">3</div>
+                <span class="hours-tag">6 horas</span>
+                <h3>Preparación y Análisis Exploratorio</h3>
+                <p>Carga, limpieza, EDA completo y visualizaciones profesionales con Pandas, Matplotlib y Seaborn.</p>
+                <a href="Modulo3_EDA_Preparacion.html" class="btn-module">
+                    Entrar al módulo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="module-card">
+                <div class="module-number">4</div>
+                <span class="hours-tag">6 horas</span>
+                <h3>Modelado, Evaluación y Validación</h3>
+                <p>Scikit-learn, modelos de regresión y clasificación, métricas y selección del mejor modelo.</p>
+                <a href="Modulo4_Modelado.html" class="btn-module">
+                    Entrar al módulo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="module-card">
+                <div class="module-number">5</div>
+                <span class="hours-tag">6 horas</span>
+                <h3>Proyecto Integrador y Despliegue</h3>
+                <p>Proyecto completo de principio a fin, documentación, presentación y entrega profesional.</p>
+                <a href="Modulo5_Proyecto_Integrador.html" class="btn-module">
+                    Entrar al módulo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container">
+        <div class="cta">
+            <h2>¿Listo para comenzar?</h2>
             <p>
-                El curso combina <strong>gestión de proyectos de datos</strong> (metodologías, roles, entregables) 
-                con las herramientas esenciales de Python para llevar a cabo un proyecto completo de 
-                ciencia de datos de forma profesional.
+                Empieza por el Módulo 1 y avanza paso a paso hasta entregar 
+                tu propio proyecto de ciencia de datos.
             </p>
-        </div>
-
-        <div class="card">
-            <h2>Estructura del Curso (30 horas)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Módulo</th>
-                        <th>Nombre</th>
-                        <th>Horas</th>
-                        <th>Enfoque principal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>1</strong></td>
-                        <td>Fundamentos de Python y Entorno de Trabajo</td>
-                        <td><span class="hours">6 h</span></td>
-                        <td>Sintaxis, estructuras de datos, Jupyter y buenas prácticas</td>
-                    </tr>
-                    <tr>
-                        <td><strong>2</strong></td>
-                        <td>Gestión de Proyectos de Ciencia de Datos</td>
-                        <td><span class="hours">6 h</span></td>
-                        <td>CRISP-DM, Agile/Scrum, roles, documentación y repositorios</td>
-                    </tr>
-                    <tr>
-                        <td><strong>3</strong></td>
-                        <td>Preparación y Análisis Exploratorio de Datos</td>
-                        <td><span class="hours">6 h</span></td>
-                        <td>Pandas, limpieza, EDA y visualización profesional</td>
-                    </tr>
-                    <tr>
-                        <td><strong>4</strong></td>
-                        <td>Modelado, Evaluación y Validación</td>
-                        <td><span class="hours">6 h</span></td>
-                        <td>Scikit-learn, métricas, validación cruzada y selección de modelos</td>
-                    </tr>
-                    <tr>
-                        <td><strong>5</strong></td>
-                        <td>Proyecto Integrador y Despliegue</td>
-                        <td><span class="hours">6 h</span></td>
-                        <td>Proyecto completo, presentación, documentación y entrega</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="card">
-            <h2>Detalle por Módulo</h2>
-
-            <div class="module-card">
-                <h3>Módulo 1 — Fundamentos de Python y Entorno de Trabajo <span class="hours">6 h</span></h3>
-                <ul>
-                    <li>Instalación de Anaconda / Miniconda y creación de entornos</li>
-                    <li>Jupyter Notebook / JupyterLab y buenas prácticas de notebooks</li>
-                    <li>Sintaxis básica de Python: variables, tipos, operadores, control de flujo</li>
-                    <li>Estructuras de datos: listas, tuplas, diccionarios y sets</li>
-                    <li>Funciones, comprensión de listas y manejo de archivos</li>
-                    <li>Introducción a NumPy</li>
-                </ul>
-            </div>
-
-            <div class="module-card">
-                <h3>Módulo 2 — Gestión de Proyectos de Ciencia de Datos <span class="hours">6 h</span></h3>
-                <ul>
-                    <li>Ciclo de vida de un proyecto de ciencia de datos</li>
-                    <li>Metodología CRISP-DM (Business Understanding → Deployment)</li>
-                    <li>Agile y Scrum aplicados a proyectos de datos</li>
-                    <li>Roles: Data Scientist, Data Engineer, Product Owner, Stakeholder</li>
-                    <li>Control de versiones con Git y GitHub</li>
-                    <li>Documentación, README, notebooks reproducibles y gestión de dependencias</li>
-                </ul>
-            </div>
-
-            <div class="module-card">
-                <h3>Módulo 3 — Preparación y Análisis Exploratorio de Datos <span class="hours">6 h</span></h3>
-                <ul>
-                    <li>Carga de datos (CSV, Excel, bases de datos, APIs)</li>
-                    <li>Limpieza de datos: valores nulos, duplicados, outliers y tipos</li>
-                    <li>Análisis Exploratorio de Datos (EDA) completo</li>
-                    <li>Visualización con Matplotlib y Seaborn</li>
-                    <li>Feature engineering básico</li>
-                    <li>Buenas prácticas de calidad de datos en proyectos</li>
-                </ul>
-            </div>
-
-            <div class="module-card">
-                <h3>Módulo 4 — Modelado, Evaluación y Validación <span class="hours">6 h</span></h3>
-                <ul>
-                    <li>Introducción a Scikit-learn y el flujo de trabajo de ML</li>
-                    <li>Modelos supervisados: regresión y clasificación</li>
-                    <li>División de datos, validación cruzada y métricas de evaluación</li>
-                    <li>Selección de modelos y comparación de resultados</li>
-                    <li>Interpretabilidad básica y reporte de resultados</li>
-                    <li>Evitar sobreajuste y sesgos</li>
-                </ul>
-            </div>
-
-            <div class="module-card">
-                <h3>Módulo 5 — Proyecto Integrador y Despliegue <span class="hours">6 h</span></h3>
-                <ul>
-                    <li>Desarrollo de un proyecto completo de principio a fin</li>
-                    <li>Aplicación de CRISP-DM en un caso real o semirreal</li>
-                    <li>Documentación profesional del proyecto</li>
-                    <li>Presentación de resultados a stakeholders (storytelling)</li>
-                    <li>Opciones de despliegue básico (Streamlit / notebook + reporte)</li>
-                    <li>Retroalimentación y mejores prácticas de entrega</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>Metodología y Evaluación</h2>
-            <ul>
-                <li><strong>50 % teoría + demostraciones</strong> | <strong>50 % práctica guiada</strong></li>
-                <li>Uso intensivo de Jupyter Notebooks</li>
-                <li>Trabajo individual y en equipo pequeño</li>
-                <li>Evaluación continua + Proyecto Final (Módulo 5)</li>
-            </ul>
-            <p><strong>Criterios de evaluación del proyecto final:</strong></p>
-            <ul>
-                <li>Calidad técnica y reproducibilidad del código (35 %)</li>
-                <li>Análisis y visualizaciones (25 %)</li>
-                <li>Aplicación de buenas prácticas de gestión de proyectos (20 %)</li>
-                <li>Presentación y storytelling (20 %)</li>
-            </ul>
-        </div>
-
-        <div class="card" style="text-align:center;">
-            <h2>Acceso a los Módulos</h2>
-            <a href="Modulo1_Fundamentos_Python.html" class="btn"><i class="fas fa-code"></i> Módulo 1</a>
-            <a href="Modulo2_Gestion_Proyectos.html" class="btn"><i class="fas fa-tasks"></i> Módulo 2</a>
-            <a href="Modulo3_EDA_Preparacion.html" class="btn"><i class="fas fa-chart-bar"></i> Módulo 3</a>
-            <a href="Modulo4_Modelado.html" class="btn"><i class="fas fa-cogs"></i> Módulo 4</a>
-            <a href="Modulo5_Proyecto_Integrador.html" class="btn"><i class="fas fa-trophy"></i> Módulo 5</a>
+            <a href="Modulo1_Fundamentos_Python.html" class="btn-cta">
+                <i class="fas fa-play"></i> Comenzar el curso
+            </a>
         </div>
     </div>
 
     <footer>
-        <p>Administración de Proyectos en la Ciencia de Datos: Curso acelerado con Python</p>
-        <p>Temario oficial · 30 horas · 5 módulos</p>
+        <p><strong>Administración de Proyectos en la Ciencia de Datos</strong></p>
+        <p>Curso acelerado con Python · 30 horas · 5 módulos</p>
     </footer>
+
 </body>
 </html>
