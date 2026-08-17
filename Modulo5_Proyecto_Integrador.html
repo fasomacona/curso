@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 5: Proyecto Integrador y Despliegue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.75; margin: 0; background: #edf2f7; color: #2d3748; }
+        header { background: linear-gradient(135deg, #1a365d, #38a169); color: white; padding: 3rem 1.5rem; text-align: center; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+        .card { background: white; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; margin-bottom: 1.75rem; }
+        .card h2 { color: #1a365d; border-bottom: 3px solid #38a169; padding-bottom: 0.5rem; margin-top: 0; }
+        .phase { background: #f7fafc; border-left: 6px solid #38a169; padding: 1.25rem 1.5rem; margin: 1.25rem 0; border-radius: 0 10px 10px 0; }
+        .hours { background: #38a169; color: white; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.85rem; }
+        .btn { display: inline-block; background: #2b6cb0; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 0.3rem; }
+        ul { padding-left: 1.3rem; }
+        li { margin: 0.35rem 0; }
+        footer { text-align: center; padding: 2rem; background: #1a365d; color: white; margin-top: 2.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-trophy"></i> Módulo 5</h1>
+        <p><strong>Proyecto Integrador y Despliegue</strong></p>
+        <p>Duración: <span class="hours">6 horas</span></p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Objetivo del Módulo</h2>
+            <p>
+                Aplicar de forma integrada todos los conocimientos adquiridos en los módulos anteriores 
+                para desarrollar un <strong>proyecto completo de ciencia de datos</strong>, desde la 
+                definición del problema de negocio hasta la entrega de resultados y recomendaciones, 
+                siguiendo buenas prácticas de gestión de proyectos.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Descripción del Proyecto Integrador</h2>
+            <p>
+                Cada participante (o equipo pequeño) desarrollará un proyecto de principio a fin 
+                sobre un problema real o semirreal (ventas, churn, demanda, clasificación de clientes, 
+                predicción de precios, etc.).
+            </p>
+            <p>El proyecto debe seguir el ciclo CRISP-DM y documentarse de forma profesional.</p>
+        </div>
+
+        <div class="card">
+            <h2>Fases del Proyecto (detalle de actividades)</h2>
+
+            <div class="phase">
+                <h3>Fase 1 – Business Understanding (≈ 45 min)</h3>
+                <ul>
+                    <li>Definir claramente el problema de negocio y los objetivos.</li>
+                    <li>Identificar stakeholders y decisiones que se tomarán con los resultados.</li>
+                    <li>Formular las preguntas de negocio que el proyecto debe responder.</li>
+                    <li>Establecer criterios de éxito (métricas de negocio + métricas técnicas).</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Fase 2 – Data Understanding & Preparation (≈ 1.25 h)</h3>
+                <ul>
+                    <li>Cargar y explorar el dataset elegido.</li>
+                    <li>Realizar limpieza completa y documentada.</li>
+                    <li>Ejecutar un EDA sólido con visualizaciones e insights.</li>
+                    <li>Preparar las variables finales para modelado (feature engineering).</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Fase 3 – Modeling (≈ 1.5 h)</h3>
+                <ul>
+                    <li>Entrenar al menos 2–3 modelos diferentes.</li>
+                    <li>Aplicar validación adecuada (train/test o validación cruzada).</li>
+                    <li>Comparar resultados y seleccionar el modelo final.</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Fase 4 – Evaluation (≈ 45 min)</h3>
+                <ul>
+                    <li>Evaluar el modelo con las métricas correctas.</li>
+                    <li>Analizar errores y limitaciones.</li>
+                    <li>Relacionar los resultados técnicos con el impacto de negocio.</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <h3>Fase 5 – Deployment / Entrega (≈ 1.5 h)</h3>
+                <ul>
+                    <li>Documentar el proyecto (notebook limpio + README + conclusiones).</li>
+                    <li>Preparar una presentación corta orientada a stakeholders (storytelling).</li>
+                    <li>Opcional: crear un dashboard sencillo con Streamlit o un reporte exportable.</li>
+                    <li>Presentar el proyecto y recibir feedback.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Entregables Obligatorios</h2>
+            <ul>
+                <li>Notebook de Jupyter bien documentado y reproducible.</li>
+                <li>Repositorio en GitHub con estructura profesional.</li>
+                <li>README.md claro con instrucciones de ejecución.</li>
+                <li>Presentación ejecutiva (10–12 minutos).</li>
+                <li>Conclusiones y recomendaciones de negocio.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Criterios de Evaluación</h2>
+            <ul>
+                <li><strong>Calidad técnica y reproducibilidad del código</strong> — 35 %</li>
+                <li><strong>Análisis, EDA y visualizaciones</strong> — 25 %</li>
+                <li><strong>Aplicación de buenas prácticas de gestión de proyectos (CRISP-DM, documentación, Git)</strong> — 20 %</li>
+                <li><strong>Presentación, storytelling y valor de negocio</strong> — 20 %</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <a href="Modulo4_Modelado.html" class="btn">← Módulo 4</a>
+            <a href="Temario_Curso_30h.html" class="btn"><i class="fas fa-home"></i> Volver al Temario</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Módulo 5 · Administración de Proyectos en Ciencia de Datos con Python</p>
+        <p>Proyecto Integrador · Cierre del curso de 30 horas</p>
+    </footer>
+</body>
+</html>

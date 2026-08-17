@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Modelado, Evaluación y Validación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.75; margin: 0; background: #edf2f7; color: #2d3748; }
+        header { background: linear-gradient(135deg, #1a365d, #2b6cb0); color: white; padding: 3rem 1.5rem; text-align: center; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+        .card { background: white; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; margin-bottom: 1.75rem; }
+        .card h2 { color: #1a365d; border-bottom: 3px solid #2b6cb0; padding-bottom: 0.5rem; margin-top: 0; }
+        .step { border-left: 5px solid #2b6cb0; padding-left: 1.25rem; margin: 1.5rem 0; }
+        pre { background: #1a365d; color: #e2e8f0; padding: 1.1rem; border-radius: 10px; overflow-x: auto; font-size: 0.92rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { padding: 0.85rem; border-bottom: 1px solid #e2e8f0; text-align: left; }
+        th { background: #2b6cb0; color: white; }
+        .hours { background: #38a169; color: white; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.85rem; }
+        .btn { display: inline-block; background: #2b6cb0; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 0.3rem; }
+        ul { padding-left: 1.3rem; }
+        li { margin: 0.35rem 0; }
+        footer { text-align: center; padding: 2rem; background: #1a365d; color: white; margin-top: 2.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-cogs"></i> Módulo 4</h1>
+        <p><strong>Modelado, Evaluación y Validación</strong></p>
+        <p>Duración: <span class="hours">6 horas</span></p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Objetivos del Módulo</h2>
+            <ul>
+                <li>Comprender el flujo de trabajo de Machine Learning con Scikit-learn.</li>
+                <li>Entrenar modelos de regresión y clasificación de forma correcta.</li>
+                <li>Aplicar técnicas de validación y evitar sobreajuste.</li>
+                <li>Evaluar modelos con las métricas adecuadas según el problema.</li>
+                <li>Comparar modelos y seleccionar el más apropiado para el negocio.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Contenido Detallado</h2>
+
+            <div class="step">
+                <h3>1. Flujo de Trabajo de Machine Learning (1 h)</h3>
+                <ul>
+                    <li>Pipeline típico: datos → preprocesamiento → modelo → evaluación → despliegue</li>
+                    <li>Separación train / validation / test</li>
+                    <li>Importancia de no filtrar información del futuro (data leakage)</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>2. Modelos de Regresión (1.25 h)</h3>
+                <ul>
+                    <li>Regresión Lineal</li>
+                    <li>Regresión Ridge y Lasso (introducción a regularización)</li>
+                    <li>Árboles de decisión y Random Forest para regresión</li>
+                </ul>
+                <pre><code>from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+modelo = LinearRegression()
+modelo.fit(X_train, y_train)
+predicciones = modelo.predict(X_test)</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>3. Modelos de Clasificación (1.25 h)</h3>
+                <ul>
+                    <li>Regresión Logística</li>
+                    <li>Árboles de decisión y Random Forest</li>
+                    <li>Introducción a Gradient Boosting (XGBoost / LightGBM)</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>4. Evaluación de Modelos (1.5 h)</h3>
+                <table>
+                    <tr><th>Tipo de problema</th><th>Métricas principales</th></tr>
+                    <tr><td>Regresión</td><td>MAE, RMSE, R², MAPE</td></tr>
+                    <tr><td>Clasificación</td><td>Accuracy, Precision, Recall, F1, ROC-AUC</td></tr>
+                </table>
+                <pre><code>from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+mae = mean_absolute_error(y_test, predicciones)
+rmse = mean_squared_error(y_test, predicciones, squared=False)
+r2 = r2_score(y_test, predicciones)
+print(f"MAE: {mae:.2f} | RMSE: {rmse:.2f} | R²: {r2:.3f}")</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>5. Validación y Selección de Modelos (1 h)</h3>
+                <ul>
+                    <li>Validación cruzada (K-Fold y TimeSeriesSplit)</li>
+                    <li>Comparación de varios modelos</li>
+                    <li>Selección del modelo final considerando el contexto de negocio</li>
+                    <li>Interpretabilidad básica de resultados</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Actividades Prácticas</h2>
+            <ul>
+                <li>Entrenar al menos 3 modelos diferentes sobre el mismo problema.</li>
+                <li>Evaluar y comparar los modelos con las métricas adecuadas.</li>
+                <li>Documentar por qué se elige un modelo sobre los demás.</li>
+                <li>Identificar posibles sesgos o limitaciones del modelo seleccionado.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <a href="Modulo3_EDA_Preparacion.html" class="btn">← Módulo 3</a>
+            <a href="Temario_Curso_30h.html" class="btn"><i class="fas fa-home"></i> Temario</a>
+            <a href="Modulo5_Proyecto_Integrador.html" class="btn">Siguiente: Módulo 5 →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Módulo 4 · Administración de Proyectos en Ciencia de Datos con Python</p>
+    </footer>
+</body>
+</html>

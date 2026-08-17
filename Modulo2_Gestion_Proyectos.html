@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Gestión de Proyectos de Ciencia de Datos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.75; margin: 0; background: #edf2f7; color: #2d3748; }
+        header { background: linear-gradient(135deg, #1a365d, #2b6cb0); color: white; padding: 3rem 1.5rem; text-align: center; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+        .card { background: white; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; margin-bottom: 1.75rem; }
+        .card h2 { color: #1a365d; border-bottom: 3px solid #2b6cb0; padding-bottom: 0.5rem; margin-top: 0; }
+        .step { border-left: 5px solid #2b6cb0; padding-left: 1.25rem; margin: 1.5rem 0; }
+        pre { background: #1a365d; color: #e2e8f0; padding: 1.1rem; border-radius: 10px; overflow-x: auto; font-size: 0.92rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { padding: 0.85rem; border-bottom: 1px solid #e2e8f0; text-align: left; }
+        th { background: #2b6cb0; color: white; }
+        .hours { background: #38a169; color: white; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.85rem; }
+        .btn { display: inline-block; background: #2b6cb0; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 0.3rem; }
+        ul { padding-left: 1.3rem; }
+        li { margin: 0.35rem 0; }
+        footer { text-align: center; padding: 2rem; background: #1a365d; color: white; margin-top: 2.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-tasks"></i> Módulo 2</h1>
+        <p><strong>Gestión de Proyectos de Ciencia de Datos</strong></p>
+        <p>Duración: <span class="hours">6 horas</span></p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Objetivos del Módulo</h2>
+            <ul>
+                <li>Comprender el ciclo de vida completo de un proyecto de ciencia de datos.</li>
+                <li>Aplicar la metodología CRISP-DM de forma práctica.</li>
+                <li>Conocer cómo adaptar Agile/Scrum a proyectos de datos.</li>
+                <li>Identificar roles y responsabilidades en un equipo de datos.</li>
+                <li>Usar Git y GitHub para control de versiones y colaboración.</li>
+                <li>Documentar proyectos de forma profesional y reproducible.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Contenido Detallado</h2>
+
+            <div class="step">
+                <h3>1. Ciclo de Vida de un Proyecto de Datos (1 h)</h3>
+                <ul>
+                    <li>De la idea de negocio al valor entregado</li>
+                    <li>Diferencias entre proyectos de software y proyectos de datos</li>
+                    <li>Principales causas de fracaso en proyectos de ciencia de datos</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>2. Metodología CRISP-DM (1.5 h)</h3>
+                <p>Las 6 fases de CRISP-DM:</p>
+                <table>
+                    <tr><th>Fase</th><th>Objetivo principal</th></tr>
+                    <tr><td>Business Understanding</td><td>Entender el problema de negocio y objetivos</td></tr>
+                    <tr><td>Data Understanding</td><td>Explorar y conocer los datos disponibles</td></tr>
+                    <tr><td>Data Preparation</td><td>Limpiar, transformar y preparar los datos</td></tr>
+                    <tr><td>Modeling</td><td>Construir y entrenar modelos</td></tr>
+                    <tr><td>Evaluation</td><td>Evaluar resultados desde el punto de vista de negocio</td></tr>
+                    <tr><td>Deployment</td><td>Poner el modelo en producción o entregar resultados</td></tr>
+                </table>
+            </div>
+
+            <div class="step">
+                <h3>3. Agile y Scrum en Proyectos de Datos (1 h)</h3>
+                <ul>
+                    <li>Sprints, product backlog y daily stand-ups adaptados a datos</li>
+                    <li>Definición de “Done” en un proyecto de ciencia de datos</li>
+                    <li>Priorización de hipótesis y experimentos</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>4. Roles en un Equipo de Datos (0.75 h)</h3>
+                <ul>
+                    <li>Data Scientist, Data Analyst, Data Engineer, ML Engineer</li>
+                    <li>Product Owner / Stakeholder de negocio</li>
+                    <li>Comunicación efectiva entre perfiles técnicos y de negocio</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>5. Git, GitHub y Reproducibilidad (1.25 h)</h3>
+                <ul>
+                    <li>Comandos esenciales de Git (init, add, commit, push, pull, branch)</li>
+                    <li>Estructura recomendada de repositorio de proyecto de datos</li>
+                    <li>README.md, requirements.txt / environment.yml</li>
+                    <li>Notebooks limpios y reproducibles</li>
+                </ul>
+                <pre><code>git init
+git add .
+git commit -m "Inicio del proyecto de ciencia de datos"
+git remote add origin https://github.com/usuario/proyecto.git
+git push -u origin main</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>6. Documentación y Entregables (0.5 h)</h3>
+                <ul>
+                    <li>Qué documentar y para quién</li>
+                    <li>Reportes ejecutivos vs documentación técnica</li>
+                    <li>Plantillas de documentación de proyectos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Actividades Prácticas</h2>
+            <ul>
+                <li>Definir el problema de negocio de un caso de estudio usando CRISP-DM.</li>
+                <li>Crear un repositorio en GitHub con la estructura profesional de un proyecto de datos.</li>
+                <li>Redactar un README claro y un archivo de dependencias.</li>
+                <li>Simular un sprint planning de un proyecto de ciencia de datos.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <a href="Modulo1_Fundamentos_Python.html" class="btn">← Módulo 1</a>
+            <a href="Temario_Curso_30h.html" class="btn"><i class="fas fa-home"></i> Temario</a>
+            <a href="Modulo3_EDA_Preparacion.html" class="btn">Siguiente: Módulo 3 →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Módulo 2 · Administración de Proyectos en Ciencia de Datos con Python</p>
+    </footer>
+</body>
+</html>

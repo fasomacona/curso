@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Preparación y Análisis Exploratorio de Datos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.75; margin: 0; background: #edf2f7; color: #2d3748; }
+        header { background: linear-gradient(135deg, #1a365d, #2b6cb0); color: white; padding: 3rem 1.5rem; text-align: center; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+        .card { background: white; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; margin-bottom: 1.75rem; }
+        .card h2 { color: #1a365d; border-bottom: 3px solid #2b6cb0; padding-bottom: 0.5rem; margin-top: 0; }
+        .step { border-left: 5px solid #2b6cb0; padding-left: 1.25rem; margin: 1.5rem 0; }
+        pre { background: #1a365d; color: #e2e8f0; padding: 1.1rem; border-radius: 10px; overflow-x: auto; font-size: 0.92rem; }
+        .hours { background: #38a169; color: white; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.85rem; }
+        .btn { display: inline-block; background: #2b6cb0; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 0.3rem; }
+        ul { padding-left: 1.3rem; }
+        li { margin: 0.35rem 0; }
+        footer { text-align: center; padding: 2rem; background: #1a365d; color: white; margin-top: 2.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-chart-bar"></i> Módulo 3</h1>
+        <p><strong>Preparación y Análisis Exploratorio de Datos</strong></p>
+        <p>Duración: <span class="hours">6 horas</span></p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Objetivos del Módulo</h2>
+            <ul>
+                <li>Cargar datos desde diferentes fuentes de forma eficiente.</li>
+                <li>Realizar una limpieza de datos profesional y documentada.</li>
+                <li>Ejecutar un Análisis Exploratorio de Datos (EDA) completo.</li>
+                <li>Crear visualizaciones claras y orientadas a insights de negocio.</li>
+                <li>Aplicar feature engineering básico dentro de un proyecto.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Contenido Detallado</h2>
+
+            <div class="step">
+                <h3>1. Carga de Datos (1 h)</h3>
+                <ul>
+                    <li>Lectura de CSV, Excel, JSON y bases de datos</li>
+                    <li>Opciones importantes de pandas (parse_dates, dtype, na_values)</li>
+                    <li>Inspección inicial: shape, dtypes, head, info, describe</li>
+                </ul>
+                <pre><code>import pandas as pd
+
+df = pd.read_csv("datos.csv", parse_dates=["fecha"])
+print(df.shape)
+df.info()
+df.describe()</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>2. Limpieza de Datos (1.5 h)</h3>
+                <ul>
+                    <li>Detección y tratamiento de valores nulos</li>
+                    <li>Eliminación o corrección de duplicados</li>
+                    <li>Manejo de outliers</li>
+                    <li>Conversión de tipos de datos</li>
+                    <li>Normalización de texto y categorías</li>
+                </ul>
+                <pre><code># Valores nulos
+df.isnull().sum()
+df = df.dropna(subset=["columna_importante"])
+df["edad"] = df["edad"].fillna(df["edad"].median())
+
+# Duplicados
+df = df.drop_duplicates()</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>3. Análisis Exploratorio de Datos – EDA (1.5 h)</h3>
+                <ul>
+                    <li>Análisis univariado y bivariado</li>
+                    <li>Correlaciones y matrices de correlación</li>
+                    <li>Agrupaciones y tablas dinámicas</li>
+                    <li>Detección de patrones y anomalías</li>
+                </ul>
+                <pre><code>df.groupby("categoria")["ventas"].agg(["mean", "sum", "count"])
+pd.crosstab(df["region"], df["producto"])</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>4. Visualización Profesional (1.5 h)</h3>
+                <ul>
+                    <li>Matplotlib y Seaborn: gráficos de barras, líneas, histogramas, boxplots</li>
+                    <li>Heatmaps y pairplots</li>
+                    <li>Buenas prácticas de visualización (títulos, etiquetas, colores, accesibilidad)</li>
+                </ul>
+                <pre><code>import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(10,6))
+sns.barplot(data=df, x="region", y="ventas", estimator="mean")
+plt.title("Ventas promedio por región")
+plt.show()</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>5. Feature Engineering Básico (0.5 h)</h3>
+                <ul>
+                    <li>Creación de variables temporales (año, mes, día de la semana)</li>
+                    <li>Transformaciones simples y variables derivadas</li>
+                    <li>Codificación de variables categóricas (introducción)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Actividades Prácticas</h2>
+            <ul>
+                <li>Cargar un dataset real o semirreal y realizar la limpieza completa.</li>
+                <li>Elaborar un EDA documentado con al menos 8 visualizaciones.</li>
+                <li>Extraer 5 insights de negocio claros a partir del análisis.</li>
+                <li>Crear variables nuevas útiles para un posible modelado posterior.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <a href="Modulo2_Gestion_Proyectos.html" class="btn">← Módulo 2</a>
+            <a href="Temario_Curso_30h.html" class="btn"><i class="fas fa-home"></i> Temario</a>
+            <a href="Modulo4_Modelado.html" class="btn">Siguiente: Módulo 4 →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Módulo 3 · Administración de Proyectos en Ciencia de Datos con Python</p>
+    </footer>
+</body>
+</html>
