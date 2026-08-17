@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temario - Administración de Proyectos en Ciencia de Datos con Python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --success: #38a169;
+            --light: #f7fafc;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            background: #edf2f7;
+            color: #2d3748;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+        }
+        header h1 { margin: 0 0 0.5rem; font-size: 2.2rem; }
+        header p { margin: 0.3rem 0; opacity: 0.95; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+        .card {
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 1.75rem;
+        }
+        .card h2 {
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0;
+        }
+        th, td {
+            padding: 0.9rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) { background: #f7fafc; }
+        .module-card {
+            border-left: 6px solid var(--accent);
+            padding-left: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .hours {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.85rem 1.6rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.4rem;
+            transition: 0.2s;
+        }
+        .btn:hover { background: var(--primary); transform: translateY(-2px); }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+            margin-top: 3rem;
+        }
+        ul { padding-left: 1.4rem; }
+        li { margin: 0.4rem 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-project-diagram"></i> Administración de Proyectos en la Ciencia de Datos</h1>
+        <p><strong>Curso acelerado con Python</strong></p>
+        <p>Duración total: 30 horas | 5 Módulos</p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Objetivo General del Curso</h2>
+            <p>
+                Conocer los conceptos fundamentales del lenguaje de programación de manera rápida y eficaz, 
+                con el fin de que los participantes adquieran las habilidades necesarias para poder aplicar 
+                Python en proyectos reales de Ciencia de Datos en un corto período de tiempo.
+            </p>
+            <p>
+                El curso combina <strong>gestión de proyectos de datos</strong> (metodologías, roles, entregables) 
+                con las herramientas esenciales de Python para llevar a cabo un proyecto completo de 
+                ciencia de datos de forma profesional.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Estructura del Curso (30 horas)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Módulo</th>
+                        <th>Nombre</th>
+                        <th>Horas</th>
+                        <th>Enfoque principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Fundamentos de Python y Entorno de Trabajo</td>
+                        <td><span class="hours">6 h</span></td>
+                        <td>Sintaxis, estructuras de datos, Jupyter y buenas prácticas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Gestión de Proyectos de Ciencia de Datos</td>
+                        <td><span class="hours">6 h</span></td>
+                        <td>CRISP-DM, Agile/Scrum, roles, documentación y repositorios</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Preparación y Análisis Exploratorio de Datos</td>
+                        <td><span class="hours">6 h</span></td>
+                        <td>Pandas, limpieza, EDA y visualización profesional</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>Modelado, Evaluación y Validación</td>
+                        <td><span class="hours">6 h</span></td>
+                        <td>Scikit-learn, métricas, validación cruzada y selección de modelos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>Proyecto Integrador y Despliegue</td>
+                        <td><span class="hours">6 h</span></td>
+                        <td>Proyecto completo, presentación, documentación y entrega</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Detalle por Módulo</h2>
+
+            <div class="module-card">
+                <h3>Módulo 1 — Fundamentos de Python y Entorno de Trabajo <span class="hours">6 h</span></h3>
+                <ul>
+                    <li>Instalación de Anaconda / Miniconda y creación de entornos</li>
+                    <li>Jupyter Notebook / JupyterLab y buenas prácticas de notebooks</li>
+                    <li>Sintaxis básica de Python: variables, tipos, operadores, control de flujo</li>
+                    <li>Estructuras de datos: listas, tuplas, diccionarios y sets</li>
+                    <li>Funciones, comprensión de listas y manejo de archivos</li>
+                    <li>Introducción a NumPy</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h3>Módulo 2 — Gestión de Proyectos de Ciencia de Datos <span class="hours">6 h</span></h3>
+                <ul>
+                    <li>Ciclo de vida de un proyecto de ciencia de datos</li>
+                    <li>Metodología CRISP-DM (Business Understanding → Deployment)</li>
+                    <li>Agile y Scrum aplicados a proyectos de datos</li>
+                    <li>Roles: Data Scientist, Data Engineer, Product Owner, Stakeholder</li>
+                    <li>Control de versiones con Git y GitHub</li>
+                    <li>Documentación, README, notebooks reproducibles y gestión de dependencias</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h3>Módulo 3 — Preparación y Análisis Exploratorio de Datos <span class="hours">6 h</span></h3>
+                <ul>
+                    <li>Carga de datos (CSV, Excel, bases de datos, APIs)</li>
+                    <li>Limpieza de datos: valores nulos, duplicados, outliers y tipos</li>
+                    <li>Análisis Exploratorio de Datos (EDA) completo</li>
+                    <li>Visualización con Matplotlib y Seaborn</li>
+                    <li>Feature engineering básico</li>
+                    <li>Buenas prácticas de calidad de datos en proyectos</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h3>Módulo 4 — Modelado, Evaluación y Validación <span class="hours">6 h</span></h3>
+                <ul>
+                    <li>Introducción a Scikit-learn y el flujo de trabajo de ML</li>
+                    <li>Modelos supervisados: regresión y clasificación</li>
+                    <li>División de datos, validación cruzada y métricas de evaluación</li>
+                    <li>Selección de modelos y comparación de resultados</li>
+                    <li>Interpretabilidad básica y reporte de resultados</li>
+                    <li>Evitar sobreajuste y sesgos</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h3>Módulo 5 — Proyecto Integrador y Despliegue <span class="hours">6 h</span></h3>
+                <ul>
+                    <li>Desarrollo de un proyecto completo de principio a fin</li>
+                    <li>Aplicación de CRISP-DM en un caso real o semirreal</li>
+                    <li>Documentación profesional del proyecto</li>
+                    <li>Presentación de resultados a stakeholders (storytelling)</li>
+                    <li>Opciones de despliegue básico (Streamlit / notebook + reporte)</li>
+                    <li>Retroalimentación y mejores prácticas de entrega</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Metodología y Evaluación</h2>
+            <ul>
+                <li><strong>50 % teoría + demostraciones</strong> | <strong>50 % práctica guiada</strong></li>
+                <li>Uso intensivo de Jupyter Notebooks</li>
+                <li>Trabajo individual y en equipo pequeño</li>
+                <li>Evaluación continua + Proyecto Final (Módulo 5)</li>
+            </ul>
+            <p><strong>Criterios de evaluación del proyecto final:</strong></p>
+            <ul>
+                <li>Calidad técnica y reproducibilidad del código (35 %)</li>
+                <li>Análisis y visualizaciones (25 %)</li>
+                <li>Aplicación de buenas prácticas de gestión de proyectos (20 %)</li>
+                <li>Presentación y storytelling (20 %)</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <h2>Acceso a los Módulos</h2>
+            <a href="Modulo1_Fundamentos_Python.html" class="btn"><i class="fas fa-code"></i> Módulo 1</a>
+            <a href="Modulo2_Gestion_Proyectos.html" class="btn"><i class="fas fa-tasks"></i> Módulo 2</a>
+            <a href="Modulo3_EDA_Preparacion.html" class="btn"><i class="fas fa-chart-bar"></i> Módulo 3</a>
+            <a href="Modulo4_Modelado.html" class="btn"><i class="fas fa-cogs"></i> Módulo 4</a>
+            <a href="Modulo5_Proyecto_Integrador.html" class="btn"><i class="fas fa-trophy"></i> Módulo 5</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Administración de Proyectos en la Ciencia de Datos: Curso acelerado con Python</p>
+        <p>Temario oficial · 30 horas · 5 módulos</p>
+    </footer>
+</body>
+</html>
