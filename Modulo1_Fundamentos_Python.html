@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Fundamentos de Python y Entorno de Trabajo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.75; margin: 0; background: #edf2f7; color: #2d3748; }
+        header { background: linear-gradient(135deg, #1a365d, #2b6cb0); color: white; padding: 3rem 1.5rem; text-align: center; }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.25rem; }
+        .card { background: white; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); padding: 2rem; margin-bottom: 1.75rem; }
+        .card h2 { color: #1a365d; border-bottom: 3px solid #2b6cb0; padding-bottom: 0.5rem; margin-top: 0; }
+        .step { border-left: 5px solid #2b6cb0; padding-left: 1.25rem; margin: 1.5rem 0; }
+        pre { background: #1a365d; color: #e2e8f0; padding: 1.1rem; border-radius: 10px; overflow-x: auto; font-size: 0.92rem; }
+        .hours { background: #38a169; color: white; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.85rem; }
+        .btn { display: inline-block; background: #2b6cb0; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 0.3rem; }
+        ul { padding-left: 1.3rem; }
+        li { margin: 0.35rem 0; }
+        footer { text-align: center; padding: 2rem; background: #1a365d; color: white; margin-top: 2.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-code"></i> Módulo 1</h1>
+        <p><strong>Fundamentos de Python y Entorno de Trabajo</strong></p>
+        <p>Duración: <span class="hours">6 horas</span></p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Objetivos del Módulo</h2>
+            <ul>
+                <li>Configurar un entorno profesional de trabajo con Python y Jupyter.</li>
+                <li>Dominar la sintaxis fundamental de Python de forma rápida y práctica.</li>
+                <li>Manejar estructuras de datos esenciales para ciencia de datos.</li>
+                <li>Escribir funciones y código limpio y reutilizable.</li>
+                <li>Introducirse a NumPy como base para el análisis numérico.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Contenido Detallado</h2>
+
+            <div class="step">
+                <h3>1. Configuración del Entorno (1 h)</h3>
+                <ul>
+                    <li>Instalación de Anaconda o Miniconda</li>
+                    <li>Creación y activación de entornos virtuales</li>
+                    <li>Instalación de Jupyter Lab / Notebook</li>
+                    <li>Buenas prácticas de organización de carpetas de proyecto</li>
+                </ul>
+                <pre><code>conda create -n ciencia-datos python=3.11 -y
+conda activate ciencia-datos
+pip install jupyterlab numpy pandas matplotlib seaborn</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>2. Sintaxis Básica de Python (1.5 h)</h3>
+                <ul>
+                    <li>Variables, tipos de datos y operadores</li>
+                    <li>Estructuras de control: if, for, while</li>
+                    <li>Manejo de errores con try/except</li>
+                </ul>
+                <pre><code># Ejemplo de control de flujo
+edad = 28
+if edad >= 18:
+    print("Adulto")
+else:
+    print("Menor de edad")
+
+for i in range(5):
+    print(i)</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>3. Estructuras de Datos (1.5 h)</h3>
+                <ul>
+                    <li>Listas, tuplas, diccionarios y sets</li>
+                    <li>Métodos más utilizados</li>
+                    <li>Comprensión de listas (list comprehensions)</li>
+                </ul>
+                <pre><code>ventas = [1200, 1500, 980, 2100]
+promedio = sum(ventas) / len(ventas)
+
+# Comprensión de listas
+cuadrados = [x**2 for x in range(10)]</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>4. Funciones y Modularidad (1 h)</h3>
+                <ul>
+                    <li>Definición de funciones</li>
+                    <li>Parámetros, argumentos y valores de retorno</li>
+                    <li>Alcance de variables (scope)</li>
+                    <li>Módulos y paquetes básicos</li>
+                </ul>
+                <pre><code>def calcular_estadisticas(lista):
+    return {
+        "media": sum(lista)/len(lista),
+        "min": min(lista),
+        "max": max(lista)
+    }</code></pre>
+            </div>
+
+            <div class="step">
+                <h3>5. Introducción a NumPy (1 h)</h3>
+                <ul>
+                    <li>Arrays vs listas de Python</li>
+                    <li>Creación y operaciones vectorizadas</li>
+                    <li>Indexación y slicing</li>
+                    <li>Operaciones estadísticas básicas</li>
+                </ul>
+                <pre><code>import numpy as np
+
+arr = np.array([10, 20, 30, 40, 50])
+print(arr.mean(), arr.std())</code></pre>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Actividades Prácticas</h2>
+            <ul>
+                <li>Crear un entorno limpio e instalar todas las librerías del curso.</li>
+                <li>Escribir un notebook con ejercicios de sintaxis y estructuras de datos.</li>
+                <li>Implementar funciones para calcular estadísticas descriptivas básicas.</li>
+                <li>Practicar operaciones con NumPy sobre datos numéricos.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <a href="Temario_Curso_30h.html" class="btn"><i class="fas fa-home"></i> Volver al Temario</a>
+            <a href="Modulo2_Gestion_Proyectos.html" class="btn">Siguiente: Módulo 2 →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Módulo 1 · Administración de Proyectos en Ciencia de Datos con Python</p>
+    </footer>
+</body>
+</html>
