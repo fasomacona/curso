@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Completa - Módulo 2: Gestión de Proyectos de Ciencia de Datos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --accent: #2b6cb0;
+            --success: #38a169;
+            --warning: #d69e2e;
+            --light: #f7fafc;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.75;
+            margin: 0;
+            background: #edf2f7;
+            color: #2d3748;
+        }
+        header {
+            background: linear-gradient(135deg, #1a365d, #2b6cb0);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        header h1 { margin: 0 0 0.5rem; font-size: 1.9rem; }
+        .container { max-width: 1050px; margin: 2rem auto; padding: 0 1.25rem; }
+        .card {
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            margin-bottom: 1.75rem;
+        }
+        .card h2 {
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        .activity {
+            border-left: 6px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            background: #f8fafc;
+            border-radius: 0 10px 10px 0;
+        }
+        .activity h3 {
+            margin-top: 0;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .badge-time { background: var(--success); }
+        .badge-important { background: #c53030; }
+        pre {
+            background: #1a365d;
+            color: #e2e8f0;
+            padding: 1.1rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            padding: 0.85rem;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+        }
+        th { background: var(--accent); color: white; }
+        .checklist li {
+            margin: 0.5rem 0;
+            list-style: none;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        .deliverable {
+            background: #ebf8ff;
+            border: 2px solid #90cdf4;
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.3rem;
+        }
+        ul { padding-left: 1.3rem; }
+        li { margin: 0.4rem 0; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+            margin-top: 2.5rem;
+        }
+        .note {
+            background: #fefcbf;
+            border-left: 5px solid var(--warning);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-tasks"></i> Práctica Completa — Módulo 2</h1>
+        <p><strong>Gestión de Proyectos de Ciencia de Datos</strong></p>
+        <p>Duración estimada: 4 – 5 horas | Individual o en equipos de 2–3 personas</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Introducción -->
+        <div class="card">
+            <h2>Objetivo de la Práctica</h2>
+            <p>
+                Aplicar de forma práctica los conceptos de <strong>gestión de proyectos de ciencia de datos</strong>:
+                CRISP-DM, definición de roles, control de versiones con Git/GitHub y documentación profesional.
+            </p>
+            <p>
+                Al finalizar esta práctica habrás creado la <strong>base de un proyecto real</strong> listo para 
+                continuar en los siguientes módulos.
+            </p>
+        </div>
+
+        <!-- Caso de estudio -->
+        <div class="card">
+            <h2>Caso de Estudio</h2>
+            <p>
+                <strong>Empresa:</strong> “RetailMax” (cadena de supermercados mediana).<br>
+                <strong>Problema de negocio:</strong> La empresa tiene dificultades para predecir la demanda 
+                de productos frescos (frutas, verduras y lácteos). Esto genera:
+            </p>
+            <ul>
+                <li>Exceso de inventario → merma y pérdidas económicas</li>
+                <li>Falta de stock → clientes insatisfechos y pérdida de ventas</li>
+            </ul>
+            <p>
+                <strong>Objetivo del proyecto:</strong> Desarrollar un sistema de pronóstico de demanda 
+                semanal para 3 categorías de productos frescos, que permita optimizar los pedidos a proveedores.
+            </p>
+            <div class="note">
+                <strong>Nota:</strong> No necesitas tener los datos reales todavía. En esta práctica 
+                trabajamos la parte de <em>gestión y estructura</em> del proyecto.
+            </div>
+        </div>
+
+        <!-- Actividad 1 -->
+        <div class="card">
+            <div class="activity">
+                <h3>
+                    <span class="badge">Actividad 1</span>
+                    Business Understanding (CRISP-DM)
+                    <span class="badge badge-time">45–60 min</span>
+                </h3>
+                
+                <p><strong>Instrucciones:</strong> Completa el siguiente documento de entendimiento del negocio.</p>
+
+                <h4>1.1 Definición del problema</h4>
+                <ul class="checklist">
+                    <li>¿Cuál es el problema de negocio en una frase?</li>
+                    <li>¿Qué impacto económico tiene actualmente? (estimado)</li>
+                    <li>¿Quiénes son los principales stakeholders?</li>
+                    <li>¿Qué decisión de negocio se tomará con los resultados del proyecto?</li>
+                </ul>
+
+                <h4>1.2 Objetivos y criterios de éxito</h4>
+                <table>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Objetivo / Criterio</th>
+                    </tr>
+                    <tr>
+                        <td>Objetivo de negocio</td>
+                        <td>Reducir la merma de productos frescos en al menos un 15% en 6 meses</td>
+                    </tr>
+                    <tr>
+                        <td>Objetivo técnico</td>
+                        <td>Modelo de pronóstico con MAPE &lt; 12% a nivel semanal</td>
+                    </tr>
+                    <tr>
+                        <td>Criterio de aceptación</td>
+                        <td>El equipo de compras pueda usar el pronóstico en su proceso semanal</td>
+                    </tr>
+                </table>
+
+                <p><strong>Tu tarea:</strong> Redacta en un archivo Markdown o documento:</p>
+                <ul>
+                    <li>Problema de negocio (claro y conciso)</li>
+                    <li>2–3 preguntas de negocio que el proyecto debe responder</li>
+                    <li>Métricas de éxito (negocio + técnicas)</li>
+                    <li>Restricciones conocidas (tiempo, datos, recursos)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Actividad 2 -->
+        <div class="card">
+            <div class="activity">
+                <h3>
+                    <span class="badge">Actividad 2</span>
+                    Roles y Responsabilidades
+                    <span class="badge badge-time">30 min</span>
+                </h3>
+
+                <p>Asigna los siguientes roles al proyecto de RetailMax (puedes inventar nombres):</p>
+
+                <table>
+                    <tr>
+                        <th>Rol</th>
+                        <th>Responsabilidades principales</th>
+                        <th>Persona asignada</th>
+                    </tr>
+                    <tr>
+                        <td>Product Owner / Stakeholder de negocio</td>
+                        <td>Define prioridades y valida valor de negocio</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Data Scientist</td>
+                        <td>Modelado, evaluación y experimentos</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Data Analyst / EDA</td>
+                        <td>Exploración, limpieza y visualizaciones</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Data Engineer (si aplica)</td>
+                        <td>Pipelines de datos y calidad</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Project Lead / Scrum Master</td>
+                        <td>Facilita el proceso y elimina impedimentos</td>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <p><strong>Entregable:</strong> Tabla de roles completada + descripción breve de cómo se comunicarán entre sí.</p>
+            </div>
+        </div>
+
+        <!-- Actividad 3 -->
+        <div class="card">
+            <div class="activity">
+                <h3>
+                    <span class="badge">Actividad 3</span>
+                    Estructura del Repositorio + Git/GitHub
+                    <span class="badge badge-time">60–75 min</span>
+                    <span class="badge badge-important">Obligatoria</span>
+                </h3>
+
+                <p><strong>Objetivo:</strong> Crear la estructura profesional de un proyecto de ciencia de datos y subirla a GitHub.</p>
+
+                <h4>3.1 Estructura de carpetas recomendada</h4>
+                <pre><code>retailmax-demanda/
+├── data/
+│   ├── raw/              # Datos originales (no modificar)
+│   ├── processed/        # Datos limpios listos para modelar
+│   └── external/         # Datos de fuentes externas
+├── notebooks/
+│   ├── 01_business_understanding.ipynb
+│   ├── 02_eda.ipynb
+│   ├── 03_modeling.ipynb
+│   └── 04_evaluation.ipynb
+├── src/                  # Código reutilizable (.py)
+│   ├── data_processing.py
+│   └── utils.py
+├── reports/              # Reportes y presentaciones
+├── figures/              # Gráficos exportados
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── environment.yml</code></pre>
+
+                <h4>3.2 Pasos a seguir</h4>
+                <ol>
+                    <li>Crea la carpeta del proyecto en tu computadora con la estructura anterior.</li>
+                    <li>Crea un archivo <code>.gitignore</code> (incluye al menos: <code>__pycache__/</code>, <code>.ipynb_checkpoints/</code>, <code>data/raw/</code>, <code>.env</code>).</li>
+                    <li>Crea un <code>README.md</code> profesional (ver plantilla abajo).</li>
+                    <li>Crea un <code>requirements.txt</code> básico.</li>
+                    <li>Inicializa Git y súbelo a un repositorio nuevo en GitHub.</li>
+                </ol>
+
+                <h4>3.3 Plantilla mínima de README.md</h4>
+                <pre><code># Proyecto: Pronóstico de Demanda - RetailMax
+
+## Descripción
+Sistema de pronóstico de demanda semanal para productos frescos 
+con el objetivo de reducir merma y mejorar disponibilidad.
+
+## Objetivo de negocio
+Reducir la merma de productos frescos en al menos un 15%.
+
+## Estructura del proyecto
+(explica brevemente cada carpeta)
+
+## Cómo ejecutar
+1. Clonar el repositorio
+2. Crear entorno: `conda create -n retailmax python=3.11`
+3. Activar e instalar: `pip install -r requirements.txt`
+4. Abrir Jupyter Lab
+
+## Autores
+- Nombre 1
+- Nombre 2
+
+## Estado del proyecto
+En desarrollo - Fase de Business Understanding</code></pre>
+
+                <h4>3.4 Comandos Git esenciales</h4>
+                <pre><code>git init
+git add .
+git commit -m "Estructura inicial del proyecto RetailMax"
+git branch -M main
+git remote add origin https://github.com/TU_USUARIO/retailmax-demanda.git
+git push -u origin main</code></pre>
+            </div>
+        </div>
+
+        <!-- Actividad 4 -->
+        <div class="card">
+            <div class="activity">
+                <h3>
+                    <span class="badge">Actividad 4</span>
+                    Planificación de Sprints (Agile)
+                    <span class="badge badge-time">40 min</span>
+                </h3>
+
+                <p>Define un plan de 3 sprints (de 1 semana cada uno) para el proyecto:</p>
+
+                <table>
+                    <tr>
+                        <th>Sprint</th>
+                        <th>Objetivo principal</th>
+                        <th>Entregables</th>
+                        <th>Duración</th>
+                    </tr>
+                    <tr>
+                        <td>Sprint 1</td>
+                        <td>Business Understanding + Data Understanding</td>
+                        <td>Documento de negocio + EDA inicial</td>
+                        <td>1 semana</td>
+                    </tr>
+                    <tr>
+                        <td>Sprint 2</td>
+                        <td>Data Preparation + Primeros modelos</td>
+                        <td>Datos limpios + baseline model</td>
+                        <td>1 semana</td>
+                    </tr>
+                    <tr>
+                        <td>Sprint 3</td>
+                        <td>Mejora de modelos + Evaluación + Entrega</td>
+                        <td>Modelo final + reporte + presentación</td>
+                        <td>1 semana</td>
+                    </tr>
+                </table>
+
+                <p><strong>Tu tarea:</strong> Adapta o completa la tabla anterior según tu visión del proyecto y define 3–5 tareas concretas del backlog del Sprint 1.</p>
+            </div>
+        </div>
+
+        <!-- Actividad 5 -->
+        <div class="card">
+            <div class="activity">
+                <h3>
+                    <span class="badge">Actividad 5</span>
+                    Definición de “Done”
+                    <span class="badge badge-time">20 min</span>
+                </h3>
+
+                <p>Define cuándo se considera <strong>terminada</strong> cada fase importante:</p>
+
+                <ul class="checklist">
+                    <li>Una tarea de limpieza de datos se considera “Done” cuando…</li>
+                    <li>Un notebook de EDA se considera “Done” cuando…</li>
+                    <li>Un modelo se considera “Done” cuando…</li>
+                    <li>El proyecto completo se considera “Done” cuando…</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Entregables -->
+        <div class="card">
+            <h2>Entregables de la Práctica</h2>
+            <div class="deliverable">
+                <p><strong>Debes entregar:</strong></p>
+                <ol>
+                    <li>Documento de <strong>Business Understanding</strong> (Markdown o PDF).</li>
+                    <li>Tabla de <strong>roles y responsabilidades</strong>.</li>
+                    <li>Enlace al <strong>repositorio de GitHub</strong> con:
+                        <ul>
+                            <li>Estructura de carpetas correcta</li>
+                            <li>README.md completo</li>
+                            <li>.gitignore</li>
+                            <li>requirements.txt</li>
+                        </ul>
+                    </li>
+                    <li>Plan de <strong>3 sprints</strong> + backlog del Sprint 1.</li>
+                    <li>Definición de <strong>“Done”</strong> para las fases principales.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Criterios de evaluación -->
+        <div class="card">
+            <h2>Criterios de Evaluación de esta Práctica</h2>
+            <table>
+                <tr>
+                    <th>Criterio</th>
+                    <th>Peso</th>
+                </tr>
+                <tr>
+                    <td>Claridad y calidad del Business Understanding</td>
+                    <td>25%</td>
+                </tr>
+                <tr>
+                    <td>Estructura profesional del repositorio + README</td>
+                    <td>30%</td>
+                </tr>
+                <tr>
+                    <td>Uso correcto de Git/GitHub</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>Planificación de sprints y definición de Done</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>Organización y presentación de la entrega</td>
+                    <td>10%</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Consejos -->
+        <div class="card">
+            <h2>Consejos para tener éxito</h2>
+            <ul>
+                <li>Sé concreto y realista en los objetivos de negocio.</li>
+                <li>El README es la “carta de presentación” de tu proyecto: cuídalo.</li>
+                <li>Usa commits claros y frecuentes.</li>
+                <li>Piensa siempre en quién va a leer tu documentación (stakeholders no técnicos).</li>
+                <li>Esta estructura te servirá para el Proyecto Final del Módulo 5.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align:center;">
+            <a href="Modulo2_Gestion_Proyectos.html" class="btn"><i class="fas fa-arrow-left"></i> Volver al Módulo 2</a>
+            <a href="index.html" class="btn"><i class="fas fa-home"></i> Inicio del Curso</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Práctica Completa · Módulo 2 · Gestión de Proyectos de Ciencia de Datos</p>
+        <p>Curso: Administración de Proyectos en la Ciencia de Datos con Python</p>
+    </footer>
+</body>
+</html>
